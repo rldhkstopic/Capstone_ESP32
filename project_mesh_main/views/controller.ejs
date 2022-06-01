@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+      <meta http-equiv="refresh" content="5">
+      <<style media="screen">
+        body {text-align:left;}
+        p {display: inline-block; margin: 0 !important;}
+        .node {flex: 1;margin: 0px 2px;}
+        .node-table {display: flex;width: 100%;justify-content: space-between;}
+
+        .node-box {
+          width: 100%;
+          margin-top: 40px;
+          margin-bottom:20px;
+        }
+
+        .container header {border-bottom: 1px solid #bbb;text-align:center;}
+
+        .node-info {
+          background: skyblue;
+          padding: 10px;
+          border-bottom: 1px solid #ccc;
+          text-align: left;
+          transition: 1s;
+        }
+
+        .node-info .node-number {font-size: 21px;font-weight: bold;    line-height: 1;}
+        .node-info-RSSI {border: 1px solid #aaa;border-collapse: collapse;}
+        .node-BSSID {line-height: 1;}
+        .node-neighbor {padding: 5px 10px;transition: 1s;  border-bottom: 1px solid #ccc;}
+
+        .node-ID {font-size: 12px;}
+
+        .dist-normal{}
+        .dist-short{
+          border-left: 5px solid orangered;
+        }
+
+        .com-normal {
+          background-color: #ccc;
+          color : black;
+          border-radius: .25em ;
+        }
+        .com-success {
+          background-color: #5cb85c !important;
+          color : #fff !important;
+          border-radius: .25em !important;
+        }
+
+        .com-danger {
+          background-color: #d9534f;
+          color : #fff;
+          border-radius: .25em;
+        }
+      </style>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+      <script>
+        window.onload = function () {
+          if( <%=node1Stat%> )
+            document.querySelector('.node-1 .node-info').className = 'node-info com-success';
+          else  document.querySelector('.node-1 .node-info').className = 'node-info com-danger';
+          if( <%=node2Stat%> )
+            document.querySelector('.node-2 .node-info').className = 'node-info com-success';
+          else document.querySelector('.node-2 .node-info').className = 'node-info com-danger';
+          if( <%=node3Stat%> )
+            document.querySelector('.node-3 .node-info').className = 'node-info com-success';
+          else document.querySelector('.node-3 .node-info').className = 'node-info com-danger';
+          if( <%=node4Stat%> )
+            document.querySelector('.node-4 .node-info').className = 'node-info com-success';
+          else document.querySelector('.node-4 .node-info').className = 'node-info com-danger';
+          if( <%=node5Stat%> )
+            document.querySelector('.node-5 .node-info').className = 'node-info com-success';
+          else document.querySelector('.node-5 .node-info').className = 'node-info com-danger';
+
+          var distCheck = "";
+            if( <%=node1_dist1%>)
+              document.querySelector('.node-1 .node-neighbor.neighbor-1').className = 'node-neighbor neighbor-1 dist-short';
+            else  document.querySelector('.node-1 .node-neighbor.neighbor-1').className = 'node-neighbor neighbor-1';
+            if( <%=node1_dist2%>)
+              document.querySelector('.node-1 .node-neighbor.neighbor-2').className = 'node-neighbor neighbor-2 dist-short';
+            else  document.querySelector('.node-1 .node-neighbor.neighbor-2').className = 'node-neighbor neighbor-2';
+            if( <%=node1_dist3%>)
+              document.querySelector('.node-1 .node-neighbor.neighbor-3').className = 'node-neighbor neighbor-3 dist-short';
+            else  document.querySelector('.node-1 .node-neighbor.neighbor-3').className = 'node-neighbor neighbor-3';
+            if( <%=node1_dist4%>)
+              document.querySelector('.node-1 .node-neighbor.neighbor-4').className = 'node-neighbor neighbor-4 dist-short';
+            else  document.querySelector('.node-1 .node-neighbor.neighbor-4').className = 'node-neighbor neighbor-4';
+            if( <%=node1_dist5%>)
+              document.querySelector('.node-1 .node-neighbor.neighbor-5').className = 'node-neighbor neighbor-5 dist-short';
+            else  document.querySelector('.node-1 .node-neighbor.neighbor-5').className = 'node-neighbor neighbor-5';
+
+            if( <%=node2_dist1%>)
+              document.querySelector('.node-2 .node-neighbor.neighbor-1').className = 'node-neighbor neighbor-1 dist-short';
+            else  document.querySelector('.node-2 .node-neighbor.neighbor-1').className = 'node-neighbor neighbor-1';
+            if( <%=node2_dist2%>)
+              document.querySelector('.node-2 .node-neighbor.neighbor-2').className = 'node-neighbor neighbor-2 dist-short';
+            else  document.querySelector('.node-2 .node-neighbor.neighbor-2').className = 'node-neighbor neighbor-2';
+            if( <%=node2_dist3%>)
+              document.querySelector('.node-2 .node-neighbor.neighbor-3').className = 'node-neighbor neighbor-3 dist-short';
+            else  document.querySelector('.node-2 .node-neighbor.neighbor-3').className = 'node-neighbor neighbor-3';
+            if( <%=node2_dist4%>)
+              document.querySelector('.node-2 .node-neighbor.neighbor-4').className = 'node-neighbor neighbor-4 dist-short';
+            else  document.querySelector('.node-2 .node-neighbor.neighbor-4').className = 'node-neighbor neighbor-4';
+            if( <%=node2_dist5%>)
+              document.querySelector('.node-2 .node-neighbor.neighbor-5').className = 'node-neighbor neighbor-5 dist-short';
+            else  document.querySelector('.node-2 .node-neighbor.neighbor-5').className = 'node-neighbor neighbor-5';
+
+            if( <%=node3_dist1%>)
+              document.querySelector('.node-3 .node-neighbor.neighbor-1').className = 'node-neighbor neighbor-1 dist-short';
+            else  document.querySelector('.node-3 .node-neighbor.neighbor-1').className = 'node-neighbor neighbor-1';
+            if( <%=node3_dist2%>)
+              document.querySelector('.node-3 .node-neighbor.neighbor-2').className = 'node-neighbor neighbor-2 dist-short';
+            else  document.querySelector('.node-3 .node-neighbor.neighbor-2').className = 'node-neighbor neighbor-2';
+            if( <%=node3_dist3%>)
+              document.querySelector('.node-3 .node-neighbor.neighbor-3').className = 'node-neighbor neighbor-3 dist-short';
+            else  document.querySelector('.node-3 .node-neighbor.neighbor-3').className = 'node-neighbor neighbor-3';
+            if( <%=node3_dist4%>)
+              document.querySelector('.node-3 .node-neighbor.neighbor-4').className = 'node-neighbor neighbor-4 dist-short';
+            else  document.querySelector('.node-3 .node-neighbor.neighbor-4').className = 'node-neighbor neighbor-4';
+            if( <%=node3_dist5%>)
+              document.querySelector('.node-3 .node-neighbor.neighbor-5').className = 'node-neighbor neighbor-5 dist-short';
+            else  document.querySelector('.node-3 .node-neighbor.neighbor-5').className = 'node-neighbor neighbor-5';
+
+            if( <%=node4_dist1%>)
+              document.querySelector('.node-4 .node-neighbor.neighbor-1').className = 'node-neighbor neighbor-1 dist-short';
+            else  document.querySelector('.node-4 .node-neighbor.neighbor-1').className = 'node-neighbor neighbor-1';
+            if( <%=node4_dist2%>)
+              document.querySelector('.node-4 .node-neighbor.neighbor-2').className = 'node-neighbor neighbor-2 dist-short';
+            else  document.querySelector('.node-4 .node-neighbor.neighbor-2').className = 'node-neighbor neighbor-2';
+            if( <%=node4_dist3%>)
+              document.querySelector('.node-4 .node-neighbor.neighbor-3').className = 'node-neighbor neighbor-3 dist-short';
+            else  document.querySelector('.node-4 .node-neighbor.neighbor-3').className = 'node-neighbor neighbor-3';
+            if( <%=node4_dist4%>)
+              document.querySelector('.node-4 .node-neighbor.neighbor-4').className = 'node-neighbor neighbor-4 dist-short';
+            else  document.querySelector('.node-4 .node-neighbor.neighbor-4').className = 'node-neighbor neighbor-4';
+            if( <%=node4_dist5%>)
+              document.querySelector('.node-4 .node-neighbor.neighbor-5').className = 'node-neighbor neighbor-5 dist-short';
+            else  document.querySelector('.node-4 .node-neighbor.neighbor-5').className = 'node-neighbor neighbor-5';
+
+            if( <%=node5_dist1%>)
+              document.querySelector('.node-5 .node-neighbor.neighbor-1').className = 'node-neighbor neighbor-1 dist-short';
+            else  document.querySelector('.node-5 .node-neighbor.neighbor-1').className = 'node-neighbor neighbor-1';
+            if( <%=node5_dist2%>)
+              document.querySelector('.node-5 .node-neighbor.neighbor-2').className = 'node-neighbor neighbor-2 dist-short';
+            else  document.querySelector('.node-5 .node-neighbor.neighbor-2').className = 'node-neighbor neighbor-2';
+            if( <%=node5_dist3%>)
+              document.querySelector('.node-5 .node-neighbor.neighbor-3').className = 'node-neighbor neighbor-3 dist-short';
+            else  document.querySelector('.node-5 .node-neighbor.neighbor-3').className = 'node-neighbor neighbor-3';
+            if( <%=node5_dist4%>)
+              document.querySelector('.node-5 .node-neighbor.neighbor-4').className = 'node-neighbor neighbor-4 dist-short';
+            else  document.querySelector('.node-5 .node-neighbor.neighbor-4').className = 'node-neighbor neighbor-4';
+            if( <%=node5_dist5%>)
+              document.querySelector('.node-5 .node-neighbor.neighbor-5').className = 'node-neighbor neighbor-5 dist-short';
+            else  document.querySelector('.node-5 .node-neighbor.neighbor-5').className = 'node-neighbor neighbor-5';
+
+        }
+      </script>
+
+      <meta charset="UTF-8">
+      <title>사회적 거리두기 안내</title>
+  </head>
+  <body>
+      <div class="container">
+        <header>
+            <h2>:: Node Management Station ::</h2>
+        </header>
+        <div class = "node-box">
+          <div class = "node-table">
+             <div class = "node node-1">
+               <div class = "node-info com-normal">
+                 <div class="node-ID">
+                   <p>BSSID : </p>
+                   <p class="BSSID-value">E8:9F:6D:E8:CD:29</p>
+                 </div>
+                 <div class="node-ID">
+                     <p>RSSI : </p>
+                     <p class="RSSI-value">444742549 </p>
+                 </div>
+                 <div class="node-number">NODE 1</div>
+               </div>
+               <div class = "node-info-RSSI">
+                 <div class = "node-neighbor neighbor-1">
+                    <div class = "NODE">N1</div>
+                    <div class = "RSSI">
+                      <p class="RSSI-value"><%= node11 %></p>
+                      <p> dBm</p>
+                    </div>
+                 </div>
+                 <div class="node-neighbor neighbor-2">
+                    <div class = "NODE">N2</div>
+                    <div class = "RSSI">
+                      <p class="RSSI-value"><%=node12%></p>
+                      <p> dBm</p>
+                    </div>
+                 </div>
+                 <div class="node-neighbor neighbor-3">
+                    <div class = "NODE">N3</div>
+                    <div class = "RSSI">
+                      <p class="RSSI-value"><%=node13%></p>
+                      <p> dBm</p>
+                    </div>
+                 </div>
+                 <div class="node-neighbor neighbor-4">
+                    <div class = "NODE">N4</div>
+                    <div class = "RSSI">
+                      <p class="RSSI-value"><%=node14%></p>
+                      <p> dBm</p>
+                    </div>
+                 </div>
+                 <div class="node-neighbor neighbor-5">
+                    <div class = "NODE">N5</div>
+                    <div class = "RSSI">
+                      <p class="RSSI-value"><%=node15%></p>
+                      <p> dBm</p>
+                    </div>
+                 </div>
+               </div>
+             </div>
+             <div class = "node node-2">
+               <div class = "node-info com-normal">
+                 <div class="node-ID">
+                   <p>BSSID : </p>
+                   <p class="BSSID-value">B8:D6:1A:82:2E:8D</p>
+                 </div>
+                 <div class="node-ID">
+                     <p>RSSI : </p>
+                     <p class="RSSI-value">000000 </p>
+                 </div>
+                 <div class="node-number">NODE 2</div>
+               </div>
+               <div class = "node-info-RSSI">
+                 <div class = "node-neighbor neighbor-1">
+                    <div class = "NODE">N1</div>
+                    <div class = "RSSI">
+                      <p class="RSSI-value"><%=node21%></p>
+                      <p> dBm</p>
+                    </div>
+                 </div>
+                 <div class="node-neighbor neighbor-2">
+                    <div class = "NODE">N2</div>
+                    <div class = "RSSI">
+                      <p class="RSSI-value"><%=node22%></p>
+                      <p> dBm</p>
+                    </div>
+                 </div>
+                 <div class="node-neighbor neighbor-3">
+                    <div class = "NODE">N3</div>
+                    <div class = "RSSI">
+                      <p class="RSSI-value"><%=node23%></p>
+                      <p> dBm</p>
+                    </div>
+                 </div>
+                 <div class="node-neighbor neighbor-4">
+                    <div class = "NODE">N4</div>
+                    <div class = "RSSI">
+                      <p class="RSSI-value"><%=node24%></p>
+                      <p> dBm</p>
+                    </div>
+                 </div>
+                 <div class="node-neighbor neighbor-5">
+                    <div class = "NODE">N5</div>
+                    <div class = "RSSI">
+                      <p class="RSSI-value"><%=node25%></p>
+                      <p> dBm</p>
+                    </div>
+                 </div>
+               </div>
+             </div>
+             <div class = "node node-3">
+               <div class = "node-info com-normal">
+                 <div class="node-ID">
+                   <p>BSSID : </p>
+                   <p class="BSSID-value">10:97:BD:34:60:71</p>
+                 </div>
+                 <div class="node-ID">
+                     <p>RSSI : </p>
+                     <p class="RSSI-value">000000 </p>
+                 </div>
+                 <div class="node-number">NODE 3</div>
+               </div>
+               <div class = "node-info-RSSI">
+                 <div class = "node-neighbor neighbor-1">
+                    <div class = "NODE">N1</div>
+                    <div class = "RSSI">
+                      <p class="RSSI-value"><%=node31%></p>
+                      <p> dBm</p>
+                    </div>
+                 </div>
+                 <div class="node-neighbor neighbor-2">
+                    <div class = "NODE">N2</div>
+                    <div class = "RSSI">
+                      <p class="RSSI-value"><%=node32%></p>
+                      <p> dBm</p>
+                    </div>
+                 </div>
+                 <div class="node-neighbor neighbor-3">
+                    <div class = "NODE">N3</div>
+                    <div class = "RSSI">
+                      <p class="RSSI-value"><%=node33%></p>
+                      <p> dBm</p>
+                    </div>
+                 </div>
+                 <div class="node-neighbor neighbor-4">
+                    <div class = "NODE">N4</div>
+                    <div class = "RSSI">
+                      <p class="RSSI-value"><%=node34%></p>
+                      <p> dBm</p>
+                    </div>
+                 </div>
+                 <div class="node-neighbor neighbor-5">
+                    <div class = "NODE">N5</div>
+                    <div class = "RSSI">
+                      <p class="RSSI-value"><%=node35%></p>
+                      <p> dBm</p>
+                    </div>
+                 </div>
+               </div>
+             </div>
+             <div class = "node node-4">
+               <div class = "node-info com-normal">
+                 <div class="node-ID">
+                   <p>BSSID : </p>
+                   <p class="BSSID-value">B8:D6:1A:82:2D:BD</p>
+                 </div>
+                 <div class="node-ID">
+                     <p>RSSI : </p>
+                     <p class="RSSI-value">000000 </p>
+                 </div>
+                 <div class="node-number">NODE 4</div>
+               </div>
+               <div class = "node-info-RSSI">
+                 <div class = "node-neighbor neighbor-1">
+                    <div class = "NODE">N1</div>
+                    <div class = "RSSI">
+                      <p class="RSSI-value"><%=node41%></p>
+                      <p> dBm</p>
+                    </div>
+                 </div>
+                 <div class="node-neighbor neighbor-2">
+                    <div class = "NODE">N2</div>
+                    <div class = "RSSI">
+                      <p class="RSSI-value"><%=node42%></p>
+                      <p> dBm</p>
+                    </div>
+                 </div>
+                 <div class="node-neighbor neighbor-3">
+                    <div class = "NODE">N3</div>
+                    <div class = "RSSI">
+                      <p class="RSSI-value"><%=node43%></p>
+                      <p> dBm</p>
+                    </div>
+                 </div>
+                 <div class="node-neighbor neighbor-4">
+                    <div class = "NODE">N4</div>
+                    <div class = "RSSI">
+                      <p class="RSSI-value"><%=node44%></p>
+                      <p> dBm</p>
+                    </div>
+                 </div>
+                 <div class="node-neighbor neighbor-5">
+                    <div class = "NODE">N5</div>
+                    <div class = "RSSI">
+                      <p class="RSSI-value"><%=node45%></p>
+                      <p> dBm</p>
+                    </div>
+                 </div>
+               </div>
+             </div>
+             <div class = "node node-5">
+               <div class = "node-info com-normal">
+                 <div class="node-ID">
+                   <p>BSSID : </p>
+                   <p class="BSSID-value">24:D7:EB:0C:8D:51</p>
+                 </div>
+                 <div class="node-ID">
+                     <p>RSSI : </p>
+                     <p class="RSSI-value">000000 </p>
+                 </div>
+                 <div class="node-number">NODE 5</div>
+
+               </div>
+               <div class = "node-info-RSSI">
+                 <div class = "node-neighbor neighbor-1">
+                    <div class = "NODE">N1</div>
+                    <div class = "RSSI">
+                      <p class="RSSI-value"><%=node51%></p>
+                      <p> dBm</p>
+                    </div>
+                 </div>
+                 <div class="node-neighbor neighbor-2">
+                    <div class = "NODE">N2</div>
+                    <div class = "RSSI">
+                      <p class="RSSI-value"><%=node52%></p>
+                      <p> dBm</p>
+                    </div>
+                 </div>
+                 <div class="node-neighbor neighbor-3">
+                    <div class = "NODE">N3</div>
+                    <div class = "RSSI">
+                      <p class="RSSI-value"><%=node53%></p>
+                      <p> dBm</p>
+                    </div>
+                 </div>
+                 <div class="node-neighbor neighbor-4">
+                    <div class = "NODE">N4</div>
+                    <div class = "RSSI">
+                      <p class="RSSI-value"><%=node54%></p>
+                      <p> dBm</p>
+                    </div>
+                 </div>
+                 <div class="node-neighbor neighbor-5">
+                    <div class = "NODE">N5</div>
+                    <div class = "RSSI">
+                      <p class="RSSI-value"><%=node55%></p>
+                      <p> dBm</p>
+                    </div>
+                 </div>
+               </div>
+             </div>
+          </div>
+        </div>
+          <div class="alert alert-danger" role="alert">
+            <strong>WARNING!</strong> 다음 노드는 사회적 거리두기 간격을 지켜주세요.<br>
+            <p><%=avgInfo %></p>
+          </div>
+      </div>
+  </body>
+</html>

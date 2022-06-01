@@ -1,0 +1,5 @@
+.node-table {display: flex;width: 100%;justify-content: space-between;}
+
+.node-box {width: 100%;margin-top: 40px;}
+
+.container header {border-bottom: 1px solid #bbb;}
