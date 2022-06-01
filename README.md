@@ -47,7 +47,6 @@ PCB 발주를 넣었는데 3주 동안 배송 연기되서 작품에는 반영�
 <img src="img/pcb2.png">
 <br>
 
-#### Node OLED
 Client 노드에만 OLED가 달려있음 -> 서버노드는 어차피 노트북이랑 연결되있어서<br>
 Connected State (Server -O- Client)<br>
 <img src="img/connected.png"><br>
